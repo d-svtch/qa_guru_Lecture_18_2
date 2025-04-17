@@ -1,3 +1,7 @@
-pytest
+pytest~=8.3.5
 requests
 jsonschema
+allure-pytest
+selene>=2.0.0rc2
+webdriver-manager~=4.0.2
+api
