@@ -21,7 +21,7 @@ def test_add_product_to_cart():
         assert result.status_code == 200
         validate(result.json(), schema=product_added)
     with step("Check cart"):
-        assert product_1["product_name"], product_1["quantity"] == check_cart(auth_cookie, product_1["product_name"], product_1["quantity"])
+        assert (product_1["product_name"], product_1["quantity"])== check_cart(auth_cookie, product_1["product_name"], product_1["quantity"])
 
 def test_add_amount_of_product():
     """API adding a few items of one product to cart"""
@@ -33,7 +33,7 @@ def test_add_amount_of_product():
         assert result.status_code == 200
         validate(result.json(), schema=product_added)
     with step("Check cart"):
-        assert product_1["product_name"], product_1["quantity"] == check_cart(auth_cookie, product_1["product_name"], product_1["quantity"])
+        assert (product_1["product_name"], product_1["quantity"])== check_cart(auth_cookie, product_1["product_name"], product_1["quantity"])
 
 def test_add_various_products():
     """API adding a different products to cart"""
@@ -50,4 +50,4 @@ def test_add_various_products():
             validate(result.json(), schema=product_added)
     with step("Check cart"):
         for product in products:
-            assert product["product_name"], product["quantity"] == check_cart(auth_cookie, product["product_name"], product["quantity"])
+            assert (product["product_name"], product["quantity"]) == check_cart(auth_cookie, product["product_name"], product["quantity"])

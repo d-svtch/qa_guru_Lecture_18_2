@@ -10,10 +10,12 @@ def check_cart(cookie, product_name, quantity):
     browser.driver.add_cookie({"name": "Nop.customer", "value": cookie})
     browser.open(API_URL + "cart")
     with step(f"Verify '{product_name}' with quantity {quantity} in cart"):
-        items = browser.all('.cart-item-row')  # заменяй на актуальный селектор обёртки товара
+        items = browser.all('.cart-item-row')
 
         for item in items:
             name = item.element('.product-name').get(query.text).strip()
-            qty = item.element('.qty-input').get(query.value)
+            if name == product_name:
+                qty = item.element('.qty-input').get(query.value)
+                return name, int(qty)
 
-    return name, quantity
+    raise AssertionError(f"Product '{product_name}' not found in cart")
