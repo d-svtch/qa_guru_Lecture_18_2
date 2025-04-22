@@ -11,3 +11,5 @@ def product_add(API_cookie, product_id, quantity):
     )
     return response
 
+def user_cookies(url):
+    return requests.get(url).cookies.get("Nop.customer")

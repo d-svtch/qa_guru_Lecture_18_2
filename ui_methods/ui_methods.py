@@ -16,5 +16,4 @@ def check_cart(cookie, product_name, quantity):
             name = item.element('.product-name').get(query.text).strip()
             qty = item.element('.qty-input').get(query.value)
 
-            if name == product_name and int(qty) == quantity:
-                return
+    return name, quantity
