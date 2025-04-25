@@ -17,5 +17,4 @@ def check_cart(cookie, product_name, quantity):
             if name == product_name:
                 qty = item.element('.qty-input').get(query.value)
                 return name, int(qty)
-
-    raise AssertionError(f"Product '{product_name}' not found in cart")
+        return None

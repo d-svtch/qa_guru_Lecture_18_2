@@ -1,4 +1,3 @@
-import requests
 from allure_commons._allure import step
 from jsonschema import validate
 from schemas.schemas import product_added
